@@ -27,8 +27,8 @@ console.info = msg => logElem.innerHTML += `<span class="info">${msg}</span><br>
 
   try {
     videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-    document.getElementById("download").href = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-    document.getElementById("download").download = "recording.mp4"
+    document.getElementById("download").href = videoElem.srcObject;
+    document.getElementById("download").download = "recording.webm"
     dumpOptionsInfo();
   } catch(err) {
     console.error("Error: " + err);
