@@ -27,7 +27,8 @@ console.info = msg => logElem.innerHTML += `<span class="info">${msg}</span><br>
 
   try {
     videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-    document.getElementById("download").href = videoElem.srcObject;
+    let recordedBlob = new Blob(videoElem.src, { type: "video/webm" });
+    document.getElementById("download").href = URL.createObjectURL(recordedBlob);;
     document.getElementById("download").download = "recording.webm"
     dumpOptionsInfo();
   } catch(err) {
